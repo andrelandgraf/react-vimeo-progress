@@ -1,0 +1,59 @@
+{
+    "name": "react-vimeo-progress",
+    "version": "1.0.0",
+    "description": "A lean responsive wrapper around the vimeo player which tracks the user's video progress.",
+    "homepage": "https://github.com/andrelandgraf/react-vimeo-progress",
+    "bugs": "https://github.com/andrelandgraf/react-vimeo-progress/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andrelandgraf/react-vimeo-progress.git"
+    },
+    "keywords": [
+        "vimeo",
+        "react",
+        "video",
+        "player"
+    ],
+    "author": "Andre Landgraf <andre.timo.landgraf@gmail.com>",
+    "maintainers": [
+        "Andre Landgraf <andre.timo.landgraf@gmail.com>"
+    ],
+    "license": "MIT",
+    "main": "dist/index.js",
+    "module": "dist/index.es.js",
+    "jsnext:main": "dist/index.es.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "rollup -c",
+        "prepublish": "npm run build"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^19.0.0",
+        "@types/react": "^17.0.14",
+        "@types/react-dom": "^17.0.9",
+        "@types/vimeo__player": "^2.10.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.3",
+        "@typescript-eslint/parser": "^4.28.3",
+        "eslint": "^7.30.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-react": "^7.24.0",
+        "identity-obj-proxy": "^3.0.0",
+        "prettier": "^2.3.2",
+        "react": "*",
+        "react-dom": "*",
+        "rollup": "^2.53.1",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "typescript": "^4.3.5"
+    },
+    "dependencies": {
+        "@vimeo/player": "^2.15.3"
+    },
+    "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    }
+}
