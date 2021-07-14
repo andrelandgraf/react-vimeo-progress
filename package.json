@@ -1,6 +1,6 @@
 {
     "name": "react-vimeo-progress",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A lean responsive wrapper around the vimeo player which tracks the user's video progress.",
     "homepage": "https://github.com/andrelandgraf/react-vimeo-progress",
     "bugs": "https://github.com/andrelandgraf/react-vimeo-progress/issues",

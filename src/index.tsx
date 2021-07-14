@@ -162,7 +162,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
     xlWidthPercentage,
     maxWidth,
     vimeoOptions = {},
-    className = '',
+    className,
 }) => {
     const [width, setWidth] = useState(0);
     const [delayedWidth, setDelayedWidth] = useState(0);
