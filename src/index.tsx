@@ -2,19 +2,6 @@ import React, { useEffect, useState, useRef, useMemo } from 'react';
 import Player from '@vimeo/player';
 
 /**
- * Vimeo does not offially support TypeScript,
- * See: https://github.com/vimeo/player.js/discussions/679
- * (I know it's 2021...)
- * I would love to expose vimeoOptions as of type Option
- * but unfortunately the current types package is outdated.
- * Please refer to the vimeo documentation to figure out
- * what options can be used.
- */
-interface PlayerInterface extends Player {
-    getFullscreen: () => Promise<number>;
-}
-
-/**
  * @param {number} progress The progress in percentage of the video length
  */
 type OnProgress = (progress: number) => void;
@@ -169,7 +156,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
     const timeoutRef = useRef<number | undefined>(undefined);
     const [progress, setProgress] = useState(latestProgress < 1 ? latestProgress : 0);
     const intervalTimeRef = useRef<number>(progressInterval);
-    const playerRef = useRef<PlayerInterface>();
+    const playerRef = useRef<Player>();
     const intervalRef = useRef<number>();
     const onVideoEndedRef = useRef<OnVideoEnded>();
     const onProgressRef = useRef<OnProgress>();
@@ -249,7 +236,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
                 width: computeRatio(delayedWidth, playerWidthPercentage, maxWidth),
             };
             const newPlayer = new Player(id, options);
-            playerRef.current = newPlayer as PlayerInterface;
+            playerRef.current = newPlayer as Player;
 
             if (progress) {
                 newPlayer.getDuration().then((duration) => {
@@ -307,7 +294,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
 
         asyncEffect();
         // only allowed prop
-    }, [delayedWidth]);
+    }, [delayedWidth, link]);
 
     useEffect(
         () => () => {
