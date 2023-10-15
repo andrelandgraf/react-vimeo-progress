@@ -24,7 +24,7 @@ The cookies are also used to offer logged-in vimeo users social features (like, 
 
 This is no other than what the embedded YouTube player is doing but you should be aware that vimeo uses cookies as third-party cookies are [regulated](https://gdpr.eu/cookies/) in several regions.
 
-### Responsivness 📱
+### Responsiveness 📱
 
 The official vimeo player package offers responsive height and width options and user progress tracking is very straight forward to implement. I would first try to make the offical package work. I personally ran into issues with the progressive feature. Feel free to get inspired by the code on [GitHub](https://github.com/andrelandgraf/react-vimeo-progress) or just install this package if it solves your issues with the offical player!
 
@@ -93,6 +93,8 @@ const handleProgress = useCallback((progress: number) => {
     console.log(`The user has watched ${progress}% of the video!`);
 });
 ```
+
+Note, `onProgress` is also called when the user pauses the video and when the video ends.
 
 ### onVideoEnded (optional)
 
