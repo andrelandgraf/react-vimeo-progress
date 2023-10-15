@@ -6,12 +6,14 @@ import Player from '@vimeo/player';
  */
 type OnProgress = (progress: number) => void;
 type OnVideoEnded = () => void;
+type OnPause = () => void;
 
 interface VimeoPlayerProps {
     id: string;
     link: string;
     progressInterval?: number;
     onProgress?: OnProgress;
+    onPause?: OnPause;
     onVideoEnded?: OnVideoEnded;
     latestProgress?: number;
     /**
@@ -140,6 +142,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
     link,
     progressInterval = 10000, // track every next 10 seconds of progress
     onProgress,
+    onPause,
     onVideoEnded,
     latestProgress = 0,
     widthPercentage = 0.9,
@@ -158,6 +161,7 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
     const intervalTimeRef = useRef<number>(progressInterval);
     const playerRef = useRef<Player>();
     const intervalRef = useRef<number>();
+    const onPauseRef = useRef<OnPause>();
     const onVideoEndedRef = useRef<OnVideoEnded>();
     const onProgressRef = useRef<OnProgress>();
     const playerWidthPercentage = useMemo(
@@ -180,6 +184,10 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
     useEffect(() => {
         onVideoEndedRef.current = onVideoEnded;
     }, [onVideoEnded]);
+
+    useEffect(() => {
+        onPauseRef.current = onPause;
+    }, [onPause]);
 
     useEffect(() => {
         onProgressRef.current = onProgress;
@@ -283,6 +291,9 @@ const VimeoPlayer: React.FC<VimeoPlayerProps> = ({
                 const newProgress = seconds / duration;
                 if (onProgressRef.current) {
                     onProgressRef.current(newProgress);
+                }
+                if (onPauseRef.current) {
+                    onPauseRef.current();
                 }
                 setProgress(newProgress);
             });

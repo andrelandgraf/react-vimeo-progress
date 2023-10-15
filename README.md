@@ -52,6 +52,7 @@ The component takes the following properties:
 -   link: string
 -   progressInterval?: number
 -   onProgress?: (progress: number) => void
+-   onVideoPaused?: () => void
 -   onVideoEnded?: () => void
 -   latestProgress?: number
 -   widthPercentage?: number
@@ -96,9 +97,13 @@ const handleProgress = useCallback((progress: number) => {
 
 Note, `onProgress` is also called when the user pauses the video and when the video ends.
 
+### onPause (optional)
+
+Will be called once when the user pauses the video. Use `onProgress` to track progress. `onPause` is handy to conditionally render something when the user pauses the video.
+
 ### onVideoEnded (optional)
 
-Will be called once when the user finished watching the video. `onVideoEnded` is handy for progress tracking.
+Will be called once when the user pauses the video. Use `onProgress` to track progress. `onVideoEnded` is handy to conditionally render something when the video ends.
 
 ### widthPercentage (optional)
 
